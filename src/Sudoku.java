@@ -16,7 +16,6 @@ public class Sudoku {
     public Integer[][][] solve(int[][] sudoku) {
         Integer[][][] unsolved = to3DArray.apply(sudoku);
         ImmutableList<Function<List, Integer[][]>> allRegions = ImmutableList.of(rowPossibilities, columnPossibilities, boxPossibilities);
-
         int k = 0;
         while (!isSolved.apply(unsolved) && k < 100) {
             k++;
@@ -31,14 +30,11 @@ public class Sudoku {
 
                     if (filteredPossibilities.length > 1) {
                         Optional<Integer[]> first = removeUnsolvedPossibilities(i, j, unsolved, allRegions, filteredPossibilities);
-
                         if (first.isPresent()) {
                             filteredPossibilities = first.get();
                         }
-
                     }
                     unsolved[i][j] = filteredPossibilities;
-
                     if (filteredPossibilities.length == 1) {
                         i = 0;
                         j = 0;
@@ -46,7 +42,6 @@ public class Sudoku {
                 }
             }
         }
-
         System.out.println("Final Result:");
         print.accept(unsolved);
         return unsolved;
