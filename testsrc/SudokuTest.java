@@ -6,10 +6,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-/**
- * User: mario
- * Date: 14/09/14
- */
 public class SudokuTest extends Sudoku {
 
     Sudoku sudoku = new Sudoku();
